@@ -1,6 +1,6 @@
 ---
 name: aliyun-sub2api-ops
-description: Use when operating Pans0020's Aliyun ECS Sub2API deployment, including SSH access, Docker upgrades, Redis fixes, Xray proxy checks, Neon Postgres edits, and Sub2API troubleshooting.
+description: Use when operating Pans0020's Aliyun ECS server and Sub2API deployment, especially when the user mentions server, Aliyun, 阿里云, 服务器, Sub2API, sub2api, 升级, 更新, 更新失败, Docker, docker-compose, Redis, Xray, proxy, 代理, 10808, 10809, 8080, login, Neon Postgres, database edits, admin user changes, 改管理员, SSH access, or troubleshooting this fixed host.
 ---
 
 # Aliyun Sub2API Ops
