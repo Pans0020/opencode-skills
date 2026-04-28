@@ -47,7 +47,7 @@ Prefer pinned tags over `latest`.
 
 ```bash
 ssh root@47.106.198.133 'docker pull weishaw/sub2api:0.1.118'
-ssh root@47.106.198.133 'cd /root/ResearchWang13 && cp docker-compose.yml docker-compose.yml.bak_$(date +%Y%m%d_%H%M%S) && sed -i "s#image: weishaw/sub2api:.*#    image: weishaw/sub2api:0.1.118#" docker-compose.yml'
+ssh root@47.106.198.133 'cd /root/ResearchWang13 && cp docker-compose.yml docker-compose.yml.bak_$(date +%Y%m%d_%H%M%S) && sed -i "s#^[[:space:]]*image: weishaw/sub2api:.*#    image: weishaw/sub2api:0.1.118#" docker-compose.yml'
 ssh root@47.106.198.133 'docker rm -f sub2api_core >/dev/null 2>&1 || true; cd /root/ResearchWang13 && docker-compose up -d'
 ```
 
