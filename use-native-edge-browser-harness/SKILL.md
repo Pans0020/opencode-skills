@@ -60,6 +60,33 @@ Important: on this Windows Browser Harness build, `admin.py` decides “remote C
 
 For Xiaohongshu, prefer `https://www.xiaohongshu.com/`; successful final URL is often `https://www.xiaohongshu.com/explore`.
 
+
+## Login / QR-Code Handoff Rule
+
+When using a browser to log into a website or app and the page requires the user to scan a QR code, verify in the browser and send a screenshot to the user immediately. Do not only say “please scan in the browser”; the user may be on QQ/voice and needs the image in chat.
+
+Required workflow:
+
+1. Detect the login/QR state from `page_info()` and visible page text. Common signs include 登录, 扫码, QR code, 阿里云APP/支付宝/钉钉, 微信扫码, 手机确认, or a visible login canvas/image.
+2. Capture the current viewport with `browser-harness_browser_take_screenshot(filename='login_qr_<site>.png')`.
+3. Send the screenshot back as native QQ media, preferably with a Windows-native `MEDIA:` path on this setup, e.g. `MEDIA:C:\Users\Pans0020\AppData\Local\Temp\login_qr_aliyun.png`. Avoid relying on `/mnt/c/...` or `/tmp/...` for QQ media delivery when a Windows path is available.
+4. Include one short instruction such as “请扫这张图，登录完成后告诉我好了，我会继续操作。”
+5. After the user confirms login, continue from the existing tab/session; do not restart Edge unless CDP is stale.
+
+If the screenshot tool returns only a POSIX/WSL path, convert it to a Windows path before sending on QQ when possible:
+
+```text
+/mnt/c/Users/Pans0020/AppData/Local/Temp/login_qr_aliyun.png
+→ C:\Users\Pans0020\AppData\Local\Temp\login_qr_aliyun.png
+```
+
+Example response when blocked by QR login:
+
+```text
+需要你扫码登录，我把当前浏览器二维码截图发你了。登录完成后回我“好了”。
+MEDIA:C:\Users\Pans0020\AppData\Local\Temp\login_qr_aliyun.png
+```
+
 ## Recovery Decision Table
 
 | Symptom | Meaning | Action |
