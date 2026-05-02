@@ -1,0 +1,48 @@
+[project]
+name = "md-exporter"
+version = "3.6.9"
+description = "An Agent Skill and Dify plugin to Convert markdown text into files in various formats such as DOCX, XLSX, PDF, PPTX and more."
+license = "Apache-2.0"
+requires-python = ">=3.11"
+authors = [
+    { name = "bowenliang123", email = "liang.bowen.123@qq.com" },
+]
+readme = "README.md"
+
+dependencies = [
+    "markdown>=3.10.2",
+    "pandas[excel,html,xml]~=3.0.1",
+    "jinja2>=3.1.6",
+    "xhtml2pdf~=0.2.17",
+    "pillow~=12.1.1",
+    "pypandoc-binary~=1.16.2",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+    "ruff>=0.15.2",
+]
+dify = [
+    "dify_plugin~=0.7.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/bowenliang123/markdown-exporter/"
+Repository = "https://github.com/bowenliang123/markdown-exporter.git"
+Issues = "https://github.com/bowenliang123/markdown-exporter/issues"
+Changelog = "https://github.com/bowenliang123/markdown-exporter/?tab=readme-ov-file#-changelog"
+
+[build-system]
+requires = ["uv_build>=0.10.4,<0.11.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "md_exporter"
+module-root = ""
+
+[tool.uv.build-backend.includes]
+assets = "md_exporter/assets/"
+
+[project.scripts]
+markdown-exporter = "md_exporter.cli:main"
