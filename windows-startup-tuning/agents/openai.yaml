@@ -1,0 +1,4 @@
+interface:
+  display_name: "Windows Startup Tuning"
+  short_description: "Audit and tune Windows startup/login tasks"
+  default_prompt: "Use $windows-startup-tuning to diagnose why Windows startup apps are slow or keep re-enabling themselves."
